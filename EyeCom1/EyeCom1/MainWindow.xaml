@@ -1,0 +1,230 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        xmlns:tobii="clr-namespace:Tobii.Interaction.Wpf;assembly=Tobii.Interaction.Net"
+        
+        Title="EyeCom" WindowState="Maximized" WindowStartupLocation="CenterScreen" Icon="res/eye.ico">
+    <!-- 
+    <Grid x:Name="LayoutRoot"
+          tobii:Behaviors.IsGazeAware="True">
+        <Grid.Style>
+            <Style TargetType="Grid">
+                <Setter Property="Background" Value="White" />
+
+                <Style.Triggers>
+                    <Trigger Property="tobii:Behaviors.HasGaze" Value="True">
+                        <Setter Property="Background" Value="Magenta" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>
+    </Grid>
+-->
+
+    <Window.Resources>
+        <Style x:Key="NormalStyle">
+            <Setter Property="tobii:Behaviors.IsGazeAware" Value="True"></Setter>
+            <Setter Property="Control.HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Control.Foreground" Value="Black"></Setter>
+            <!--<Setter Property="Control.Width" Value="500"></Setter>
+            <Setter Property="Control.Height" Value="500"></Setter>-->
+            <Setter Property="Control.IsEnabled" Value="True" />
+            <Setter Property="Button.VerticalAlignment" Value="Stretch" />
+            <Setter Property="Button.HorizontalAlignment" Value="Stretch" />
+         
+            <Style.Triggers>
+                <Trigger Property="Control.IsMouseOver" Value="true">
+                    <Setter Property="Control.FontStyle" Value="Italic"></Setter>
+                    <Setter Property="Control.Foreground" Value="Red"></Setter>
+                    <Setter Property="Control.Background" Value="Yellow"></Setter>
+                    <!--<Setter Property="Control.IsEnabled" Value="False" />-->
+                </Trigger>
+                <Trigger Property="Button.IsPressed" Value="true">
+                    <Setter Property="Control.Foreground" Value="Green"></Setter>
+                    <Setter Property="Control.Background" Value="Blue"></Setter>
+                    <!--<Setter Property="Control.IsEnabled" Value="False" />-->
+                </Trigger>
+                <Trigger Property="tobii:Behaviors.HasGaze" Value="True">
+                    <!--<EventSetter Event="Button.Click" Handler=""/>-->
+                    <Setter Property="Control.Background" Value="Magenta" />
+                    <Setter Property="Control.IsEnabled" Value="False" />
+          
+
+
+
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Name="LayoutRoot0"
+          tobii:Behaviors.IsGazeAware="True">
+
+        <Grid.Style>
+            <Style TargetType="Grid">
+                <Setter Property="Background" Value="White" />
+
+                <Style.Triggers>
+                    <Trigger Property="tobii:Behaviors.HasGaze" Value="True">
+                        <Setter Property="Background" Value="Magenta" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+
+        </Grid.Style>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+
+        <Grid Name="LayoutRoot" Grid.Column="0" Grid.Row="0"
+          tobii:Behaviors.IsGazeAware="True">
+   
+            <Grid.Style>
+            <Style TargetType="Grid">
+                <Setter Property="Background" Value="White" />
+
+                <Style.Triggers>
+                    <Trigger Property="tobii:Behaviors.HasGaze" Value="True">
+                        <Setter Property="Background" Value="Magenta" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+            
+            
+        </Grid.Style>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+
+
+            <Button Name="b_r0c0" Grid.Column="0" Grid.Row="0"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image  Name="i_r0c0" Source=".\res\menu0\r0c0.jpg"></Image>
+        </Button>
+        <Canvas Grid.Column="0" Grid.Row="0" Name="r0c0">
+            
+        </Canvas>
+            <Button Name="b_r0c1" Grid.Column="1" Grid.Row="0"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image  Name="i_r0c1" Source=".\res\menu0\r0c1.jpg"></Image>
+        </Button>
+        <Canvas Grid.Column="1" Grid.Row="0" x:Name="r0c1" />
+        <Button Name="b_r0c2" Grid.Column="2" Grid.Row="0"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image  Name="i_r0c2" Source=".\res\menu0\r0c2.jpg"></Image>
+        </Button>
+        <Canvas Grid.Column="2" Grid.Row="0" x:Name="r0c2" />
+        <Button Name="b_r0c3" Grid.Column="3" Grid.Row="0"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image  Name="i_r0c3" Source=".\res\menu0\r0c3.jpg"></Image>
+        </Button>
+        <Canvas Grid.Column="3" Grid.Row="0" x:Name="r0c3" />
+
+        <Button Name="b_r1c0" Grid.Column="0" Grid.Row="1"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image  Name="i_r1c0" Source=".\res\menu0\r1c0.jpg"></Image>
+        </Button>
+        <Canvas Grid.Column="0" Grid.Row="1" x:Name="r1c0" />
+        <Button Name="b_r1c1" Grid.Column="1" Grid.Row="1"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image Name="i_r1c1" Source=".\res\menu0\r1c1.jpg"></Image>
+        </Button>
+        <Canvas Grid.Column="1" Grid.Row="1" x:Name="r1c1" />
+        <Button Name="b_r1c2" Grid.Column="2" Grid.Row="1"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image  Name="i_r1c2" Source=".\res\menu0\r1c2.jpg"></Image>
+        </Button>
+        <Canvas Grid.Column="2" Grid.Row="1" x:Name="r1c2" />
+        <Button Name="b_r1c3" Grid.Column="3" Grid.Row="1"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image  Name="i_r1c3" Source=".\res\menu0\r1c3.jpg"></Image>
+        </Button>
+        <Canvas Grid.Column="3" Grid.Row="1" x:Name="r1c3" />
+<!--
+        <Button Grid.Column="0" Grid.Row="2"  Style="{StaticResource NormalStyle}"></Button>
+        <Button Grid.Column="1" Grid.Row="2"  Style="{StaticResource NormalStyle}"></Button>
+        <Button Grid.Column="2" Grid.Row="2"  Style="{StaticResource NormalStyle}"></Button>
+        <Button Grid.Column="3" Grid.Row="2"  Style="{StaticResource NormalStyle}"></Button>
+
+        <Button Grid.Column="0" Grid.Row="3"  Style="{StaticResource NormalStyle}"></Button>
+        <Button Grid.Column="1" Grid.Row="3"  Style="{StaticResource NormalStyle}"></Button>
+        <Button Grid.Column="2" Grid.Row="3"  Style="{StaticResource NormalStyle}"></Button>
+        <Button Grid.Column="3" Grid.Row="3"  Style="{StaticResource NormalStyle}"></Button>
+-->
+
+        </Grid>
+
+        <Grid Name="Menu" Grid.Column="0" Grid.Row="1"
+          tobii:Behaviors.IsGazeAware="True">
+
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Background" Value="White" />
+                    <Style.Triggers>
+                        <Trigger Property="tobii:Behaviors.HasGaze" Value="True">
+                            <Setter Property="Background" Value="Magenta" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+
+
+            <Button Name="b_menu0" Grid.Column="0" Grid.Row="0"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image Source=".\res\menu0\r0c0.jpg"></Image>
+            </Button>
+            <Canvas Grid.Column="0" Grid.Row="0" Name="menu0" />
+            <Button Name="b_menu1" Grid.Column="1" Grid.Row="0"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image Source=".\res\menu1\r0c0.jpg"></Image>
+            </Button>
+            <Canvas Grid.Column="1" Grid.Row="0" Name="menu1" />
+            <Button Name="b_menu2" Grid.Column="2" Grid.Row="0"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image Source=".\res\menu2\r0c0.jpg"></Image>
+            </Button>
+            <Canvas Grid.Column="2" Grid.Row="0" Name="menu2" />
+            <Button Name="b_menu3" Grid.Column="3" Grid.Row="0"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image Source=".\res\menu3\r0c0.jpg"></Image>
+            </Button>
+            <Canvas Grid.Column="3" Grid.Row="0" Name="menu3" />
+
+            <Button Name="b_menu4" Grid.Column="4" Grid.Row="0"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image Source=".\res\menu4\r0c0.jpg"></Image>
+            </Button>
+            <Canvas Grid.Column="4" Grid.Row="0" Name="menu4" />
+            <Button Name="b_menu5" Grid.Column="5" Grid.Row="0"  Style="{StaticResource NormalStyle}" IsEnabledChanged="Button_IsEnabledChanged" MouseEnter="Button_MouseEnter" MouseLeave="Button_MouseLeave">
+                <Image Source=".\res\menu5\r0c0.jpg"></Image>
+            </Button>
+            <Canvas Grid.Column="5" Grid.Row="0" Name="menu5" />
+
+            
+        </Grid>
+    </Grid>
+
+
+
+</Window>
