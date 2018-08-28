@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+        <title>EyeCom</title>
+        <script type="text/javascript">
+        var boxopened = "";
+        var imgopened = "";
+        var count = 0;
+        var found =  0;
+
+        function randomFromTo(from, to){
+            return Math.floor(Math.random() * (to - from + 1) + from);
+        }
+
+        function shuffle() {
+            var children = $("#boxcard").children();
+            var child = $("#boxcard div:first-child");
+
+            var array_img = new Array();
+
+            for (i=0; i<children.length; i++) {
+                array_img[i] = $("#"+child.attr("id")+" img").attr("src");
+                child = child.next();
+            }
+
+            var child = $("#boxcard div:first-child");
+
+            for (z=0; z<children.length; z++) {
+                randIndex = randomFromTo(0, array_img.length - 1);
+
+                // set new image
+                $("#"+child.attr("id")+" img").attr("src", array_img[randIndex]);
+                array_img.splice(randIndex, 1);
+
+                child = child.next();
+            }
+        }
+
+        function resetGame() {
+            shuffle();
+            $("img").hide();
+            $("img").removeClass("opacity");
+            count = 0;
+            $("#msg").remove();
+            $("#count").html("" + count);
+            boxopened = "";
+            imgopened = "";
+            found = 0;
+            return false;
+        }
+
+        $(document).ready(function() {
+            $("#card1 img").hide();
+            $("#card2 img").hide();
+            $("#card3 img").hide();
+            $("#card4 img").hide();
+            $("#card5 img").hide();
+            $("#card6 img").hide();
+            $("#card7 img").hide();
+            $("#card8 img").hide();
+            $("#card9 img").hide();
+            $("#card10 img").hide();
+            $("#card11 img").hide();
+            $("#card12 img").hide();
+            $("#card13 img").hide();
+            $("#card14 img").hide();
+            $("#card15 img").hide();
+            $("#card16 img").hide();
+            $("#card17 img").hide();
+            $("#card18 img").hide();
+            var div;
+            div = document.getElementById("m0");
+            div.style.backgroundColor="Blue";
+            div = document.getElementById("m1");
+            div.style.backgroundColor="Green";
+            div = document.getElementById("m2");
+            div.style.backgroundColor="Red";
+            div = document.getElementById("m3");
+            div.style.backgroundColor="Yellow";
+            div = document.getElementById("m4");
+            div.style.backgroundColor="Violet";            
+            div = document.getElementById("m5");
+            div.style.backgroundColor="Orange";
+            
+            $("#boxcard div").click(openCard);
+
+            shuffle();
+
+            function openCard() {
+
+                id = $(this).attr("id");
+                if (id == "m0") {
+                    var div = document.getElementById("boxcard");
+                    div.style.backgroundColor="Blue";
+                }
+                if (id == "m1") {
+                    var div = document.getElementById("boxcard");
+                    div.style.backgroundColor="Green";
+                }
+                if (id == "m2") {
+                    var div = document.getElementById("boxcard");
+                    div.style.backgroundColor="Red";
+                }
+                if (id == "m3") {
+                    var div = document.getElementById("boxcard");
+                    div.style.backgroundColor="Yellow";
+                }
+                if (id == "m4") {
+                    var div = document.getElementById("boxcard");
+                    div.style.backgroundColor="Violet";
+                }
+                if (id == "m5") {
+                    var div = document.getElementById("boxcard");
+                    div.style.backgroundColor="Orange";
+                }
+  
+                if ($("#"+id+" img").is(":hidden")) {
+                    $("#boxcard div").unbind("click", openCard);
+
+                    $("#"+id+" img").slideDown('fast');
+
+                    if (imgopened == "") {
+                        boxopened = id;
+                        imgopened = $("#"+id+" img").attr("src");
+                        setTimeout(function() {
+                            $("#boxcard div").bind("click", openCard)
+                        }, 300);
+                    } else {
+                        currentopened = $("#"+id+" img").attr("src");
+                        if (imgopened != currentopened) {
+                            // close again
+                            setTimeout(function() {
+                                $("#"+id+" img").slideUp('fast');
+                                $("#"+boxopened+" img").slideUp('fast');
+                                boxopened = "";
+                                imgopened = "";
+                            }, 400);
+                        } else {
+                            // found
+                            $("#"+id+" img").addClass("opacity");
+                            $("#"+boxopened+" img").addClass("opacity");
+                            found++;
+                            boxopened = "";
+                            imgopened = "";
+                        }
+                        
+                        setTimeout(function() {
+                            $("#boxcard div").bind("click", openCard)
+                        }, 400);
+                    }
+
+
+                    count++;
+                    $("#count").html("" + count);
+
+                    if (found == 9) {
+                        msg = '<span id="msg">Congrats ! You Found All Sushi With </span>';
+                        $("span.link").prepend(msg);
+                    }
+                }
+            }
+        });
+        </script>
+        <style type="text/css">
+            * {
+                font-family: Arial, "Free Sans";
+            }
+
+            body, html, table{
+                height: 100%;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+            
+            //div{height:100%}
+            
+            body {
+                //margin-left: 0px;
+                overflow: hidden;
+            }
+            
+            #boxcard {
+                margin: 0 auto;
+                width: 100vw;
+                height: 100vh;
+                z-index: 1;
+                background: #0000FF;
+            }
+
+            #boxcard td {
+                height: 20vh;
+            }
+                
+            #boxcard div {
+                float: left;
+                width: 100%;
+                height: 100%;
+                background: #d9d9d9;
+                //margin: 5px;
+                //padding: 5px;
+                //border: 1px solid #999;
+                cursor: pointer;
+                //-webkit-border-radius: .5em;
+                //-moz-border-radius: .5em;
+                //border-radius: .5em;
+                //-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.5);
+                //-moz-box-shadow: 0 1px 2px rgba(0,0,0,.5);
+                //box-shadow: 0 1px 2px rgba(0,0,0,.5);
+                z-index: 2;
+            }
+
+            #boxcard div img {
+                width: 100%;
+                height: 16vh;
+                //height: 100%;
+                border: none;
+                z-index: 3;
+            }
+
+            .opacity {
+                opacity: .6;
+                filter: alpha(opacity=60);
+            }
+
+            #boxbutton {
+                text-align: center;
+                //padding: 10px;
+            }
+            .link {
+                font-size: 18px;
+                color: #ffffff;
+                text-decoration: none;
+                background: #0066cc;
+                padding: 5px 10px;
+                -webkit-border-radius: .5em;
+                -moz-border-radius: .5em;
+                border-radius: .5em;
+            }
+            .link:hover {
+                background: #999;
+            }
+        </style>
+    </head>
+    <body>
+      <!--  <div id="boxbutton">
+            <span class="link">
+                <span id="count">0</span>
+                Click
+            </span>
+            &nbsp;
+            <a href="javascript:" class="link" onclick="resetGame();">Reset</a>
+        </div>-->
+ 
+        <div id="boxcard" >
+<table width="100%" border="1"> 
+        <tr>
+            <td width="15%">
+            <div id="card1"><img src="m0/01.jpg"/></div>
+            </td><td width="15%">
+            <div id="card2"><img src="m0/02.jpg"/></div>
+            </td><td width="15%">
+            <div id="card3"><img src="m0/03.jpg"/></div>
+            </td><td width="15%">
+            <div id="card4"><img src="m0/04.jpg"/></div>
+            </td><td width="15%">
+            <div id="card5"><img src="m0/05.jpg"/></div>
+            </td><td width="15%">
+            <div id="card6"><img src="m0/06.jpg"/></div>
+            </td>
+        </tr><tr>
+            <td>
+            <div id="card7"><img src="m0/07.jpg"/></div>
+            </td><td>
+            <div id="card8"><img src="m0/08.jpg"/></div>
+            </td><td>
+            <div id="card9"><img src="m0/09.jpg"/></div>
+            </td><td>
+            <div id="card10"><img src="m0/10.jpg"/></div>
+            </td><td>
+            <div id="card11"><img src="m0/01.jpg"/></div>
+           </td><td>
+            <div id="card12"><img src="m0/02.jpg"/></div>
+            </td>
+        </tr><tr>
+            <td> 
+            <div id="card13"><img src="m0/03.jpg"/></div>
+            </td><td>
+            <div id="card14"><img src="m0/04.jpg"/></div>
+            </td><td>
+            <div id="card15"><img src="m0/05.jpg"/></div>
+            </td><td>
+            <div id="card16"><img src="m0/06.jpg"/></div>
+            </td><td>
+            <div id="card17"><img src="m0/07.jpg"/></div>
+            </td><td>
+            <div id="card18"><img src="m0/08.jpg"/></div>
+            </td>
+        </tr><tr>
+            <td>
+            <a href="javascript:" onclick="location.href='index.html';">
+            <div id="m0"><img src="img/m0.png"/></div>
+            </a>
+            </td><td>
+            <a href="javascript:" onclick="location.href='m1.html';">
+            <div id="m1"><img src="img/m1.png"/></div>
+            </a>
+            </td><td>
+            <a href="javascript:" onclick="location.href='m2.html';">
+            <div id="m2"><img src="img/m2.png"/></div>
+            </a>
+            </td><td>
+            <a href="javascript:" onclick="location.href='m3.html';">
+            <div id="m3"><img src="img/m3.png"/></div>
+            </a>
+            </td><td>
+            <a href="javascript:" onclick="location.href='m4.html';">
+            <div id="m4"><img src="img/m4.png"/></div>
+            </a>
+            </td><td>
+            <a href="javascript:" onclick="location.href='m5.html';">
+            <div id="m5"><img src="img/m5.png"/></div>
+            </a>
+            </td>
+        </tr>
+        </table>
+        </div>
+    </body>
+</html>

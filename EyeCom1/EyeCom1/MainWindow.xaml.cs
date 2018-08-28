@@ -38,19 +38,19 @@ namespace WpfApplication1
         private static extern bool SetCursorPos(int X, int Y);
         [System.Runtime.InteropServices.DllImportAttribute("gdi32.dll")]
         private static extern bool Ellipse(IntPtr hdc, int x1, int y1, int x2, int y2);
-        /*
+      
         protected  void xOnPaint()//PaintEventArgs e)
         {
-            SolidColorBrush b = new SolidColorBrush();
-            IntPtr desktopDC = GetDC(IntPtr.Zero);
+            //SolidColorBrush b = new SolidColorBrush();
+            //IntPtr desktopDC = GetDC(IntPtr.Zero);
             //Graphics g = Graphics.FromHdc(desktopDC);
             //g.FillEllipse(b, 0, 0, 1024,7 68);
             //g.Dispose();
             //LineTo(hdc, LOWORD(lParam), HIWORD(lParam)); 
             //Ellipse(desktopDC, (int)x, (int)y, 200, 200);
-            ReleaseDC(desktopDC);
+            //ReleaseDC(desktopDC);
         }
-        */
+       
         byte a = 0;
         double w, h = 0.0;
         Canvas cvs = null;
@@ -111,6 +111,7 @@ namespace WpfApplication1
 
         private void focus(object sender, bool isEnabled)
         {
+     
             Button b = (Button)sender;
 
             ((Canvas)this.r0c0).Children.Clear();

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="js/jquery-1.5.min.js"></script>
+        <title>EyeCom</title>
+        <script type="text/javascript">
+        
+        function previewUrl(url,target){
+            //use timeout coz mousehover fires several times
+            clearTimeout(window.ht);
+            window.ht = setTimeout(function(){
+                var div = document.getElementById(target);
+                div.innerHTML = '<iframe style="width:100%;height:100%;" frameborder="0" src="' + url + '" />';
+            },20);      
+        }   
+
+        $(document).ready(function() {
+
+            var div;
+            div = document.getElementById("m0");
+            div.style.backgroundColor="Blue";
+            div = document.getElementById("m1");
+            div.style.backgroundColor="Green";
+            div = document.getElementById("m2");
+            div.style.backgroundColor="Red";
+            div = document.getElementById("m3");
+            div.style.backgroundColor="Yellow";
+            div = document.getElementById("m4");
+            div.style.backgroundColor="Violet";            
+            div = document.getElementById("m5");
+            div.style.backgroundColor="Orange";
+            
+            //$("#boxcard div").click(openCard);
+            //function openCard() {
+            //}
+            previewUrl("https://m.mlp.cz/cz/", "video")
+            
+        });
+        </script>
+        <style type="text/css">
+            * {
+                font-family: Arial, "Free Sans";
+            }
+
+            body, html, table{
+                height: 100%;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+            
+            //div{height:100%}
+            
+            body {
+                //margin-left: 0px;
+                overflow: hidden;
+            }
+            
+            #boxcard {
+                margin: 0 auto;
+                width: 100vw;
+                height: 100vh;
+                z-index: 1;
+                background: #EE82EE;
+            }
+
+            #boxcard td {
+                height: 20vh;
+            }
+                
+            #boxcard div {
+                float: left;
+                width: 100%;
+                height: 100%;
+                background: #d9d9d9;
+                //margin: 5px;
+                //padding: 5px;
+                //border: 1px solid #999;
+                cursor: pointer;
+                //-webkit-border-radius: .5em;
+                //-moz-border-radius: .5em;
+                //border-radius: .5em;
+                //-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.5);
+                //-moz-box-shadow: 0 1px 2px rgba(0,0,0,.5);
+                //box-shadow: 0 1px 2px rgba(0,0,0,.5);
+                z-index: 2;
+            }
+
+            #boxcard div img {
+                width: 100%;
+                height: 16vh;
+                //height: 100%;
+                border: none;
+                z-index: 3;
+            }
+
+            .opacity {
+                opacity: .6;
+                filter: alpha(opacity=60);
+            }
+
+            #boxbutton {
+                text-align: center;
+                //padding: 10px;
+            }
+            .link {
+                font-size: 18px;
+                color: #ffffff;
+                text-decoration: none;
+                background: #0066cc;
+                padding: 5px 10px;
+                -webkit-border-radius: .5em;
+                -moz-border-radius: .5em;
+                border-radius: .5em;
+            }
+            .link:hover {
+                background: #999;
+            }
+        </style>
+    </head>
+    <body>
+      <!--  <div id="boxbutton">
+            <span class="link">
+                <span id="count">0</span>
+                Click
+            </span>
+            &nbsp;
+            <a href="javascript:" class="link" onclick="resetGame();">Reset</a>
+        </div>-->
+ 
+        <div id="boxcard" >
+<table width="100%" border="1"> 
+        <tr>
+            <td width="100%" colspan="6" style="height: 75vh;">
+            <div id="video"></div>
+            </td>
+        </tr><tr>
+  
+        </tr><tr>
+            <td width="15%"style="height: 25vh;">
+            <a href="javascript:" onclick="location.href='index.html';">
+            <div id="m0"><img src="img/m0.png"/></div>
+            </a>
+            </td><td width="15%">
+            <a href="javascript:" onclick="location.href='m1.html';">
+            <div id="m1"><img src="img/m1.png"/></div>
+            </a>
+            </td><td width="15%">
+            <a href="javascript:" onclick="location.href='m2.html';">
+            <div id="m2"><img src="img/m2.png"/></div>
+            </a>
+            </td><td width="15%">
+            <a href="javascript:" onclick="location.href='m3.html';">
+            <div id="m3"><img src="img/m3.png"/></div>
+            </a>
+            </td><td width="15%">
+            <a href="javascript:" onclick="location.href='m4.html';">
+            <div id="m4"><img src="img/m4.png"/></div>
+            </a>
+            </td><td width="15%">
+            <a href="javascript:" onclick="location.href='m5.html';">
+            <div id="m5"><img src="img/m5.png"/></div>
+            </a>
+            </td>
+        </tr>
+        </table>
+        </div>
+    </body>
+</html>

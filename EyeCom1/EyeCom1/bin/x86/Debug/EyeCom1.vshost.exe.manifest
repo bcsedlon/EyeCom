@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EyeCom1.exe" size="323008">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EyeCom1.exe" size="309696">
       <assemblyIdentity name="EyeCom1" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>c+BpAKSS6J9etfzHFjhoMTikQRAADRpcaawrwSFitgI=</dsig:DigestValue>
+        <dsig:DigestValue>j1f/JTNYOsy+esHg9gs9UHRPnAYzsSV17yuwbe5DhKo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
