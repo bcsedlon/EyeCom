@@ -46,6 +46,9 @@
                 //setTimeout(stopVideo, 6000);
                 done = true;
             }
+            if (event.data == YT.PlayerState.PAUSED) {
+                player.playVideo();
+            }
         }
         function stopVideo() {
             player.stopVideo();
@@ -115,6 +118,7 @@
                 //padding: 5px;
                 //border: 1px solid #999;
                 cursor: pointer;
+                //cursor: none;
                 //-webkit-border-radius: .5em;
                 //-moz-border-radius: .5em;
                 //border-radius: .5em;
