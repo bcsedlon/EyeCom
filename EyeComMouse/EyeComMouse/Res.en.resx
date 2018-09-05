@@ -117,4 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Columns" xml:space="preserve">
+    <value>COLUMNS</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>CESKY</value>
+  </data>
+  <data name="Off" xml:space="preserve">
+    <value>OFF</value>
+  </data>
+  <data name="On" xml:space="preserve">
+    <value>ON</value>
+  </data>
+  <data name="Rows" xml:space="preserve">
+    <value>ROWS</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>SAVE</value>
+  </data>
+  <data name="Speed" xml:space="preserve">
+    <value>SPEED</value>
+  </data>
+  <data name="TopOffset" xml:space="preserve">
+    <value>TOP OFFSET</value>
+  </data>
 </root>

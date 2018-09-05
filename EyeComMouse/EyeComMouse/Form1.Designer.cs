@@ -67,8 +67,7 @@ namespace EyeComMouse
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.buttonEnable = new System.Windows.Forms.Button();
-            this.buttonDisable = new System.Windows.Forms.Button();
+            this.buttonOffOn = new System.Windows.Forms.Button();
             this.buttonRowsCount = new System.Windows.Forms.Button();
             this.buttonRowsCountDown = new System.Windows.Forms.Button();
             this.buttonRowsCountUp = new System.Windows.Forms.Button();
@@ -82,29 +81,19 @@ namespace EyeComMouse
             this.buttonRadiusSpeedDown = new System.Windows.Forms.Button();
             this.buttonRadiusSpeed = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonLanguage = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // buttonEnable
+            // buttonOffOn
             // 
-            this.buttonEnable.Location = new System.Drawing.Point(40, 36);
-            this.buttonEnable.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.buttonEnable.Name = "buttonEnable";
-            this.buttonEnable.Size = new System.Drawing.Size(250, 69);
-            this.buttonEnable.TabIndex = 0;
-            this.buttonEnable.Text = "ENABLE";
-            this.buttonEnable.UseVisualStyleBackColor = true;
-            this.buttonEnable.Click += new System.EventHandler(this.button_Click);
-            // 
-            // buttonDisable
-            // 
-            this.buttonDisable.Location = new System.Drawing.Point(40, 123);
-            this.buttonDisable.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.buttonDisable.Name = "buttonDisable";
-            this.buttonDisable.Size = new System.Drawing.Size(250, 69);
-            this.buttonDisable.TabIndex = 1;
-            this.buttonDisable.Text = "DISABLE";
-            this.buttonDisable.UseVisualStyleBackColor = true;
-            this.buttonDisable.Click += new System.EventHandler(this.button_Click);
+            this.buttonOffOn.Location = new System.Drawing.Point(40, 36);
+            this.buttonOffOn.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.buttonOffOn.Name = "buttonOffOn";
+            this.buttonOffOn.Size = new System.Drawing.Size(250, 69);
+            this.buttonOffOn.TabIndex = 0;
+            this.buttonOffOn.Text = "OFF / ON";
+            this.buttonOffOn.UseVisualStyleBackColor = true;
+            this.buttonOffOn.Click += new System.EventHandler(this.button_Click);
             // 
             // buttonRowsCount
             // 
@@ -236,7 +225,7 @@ namespace EyeComMouse
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(40, 297);
+            this.buttonSave.Location = new System.Drawing.Point(40, 123);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(250, 69);
@@ -245,12 +234,24 @@ namespace EyeComMouse
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // buttonLanguage
+            // 
+            this.buttonLanguage.Location = new System.Drawing.Point(40, 210);
+            this.buttonLanguage.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.buttonLanguage.Name = "buttonLanguage";
+            this.buttonLanguage.Size = new System.Drawing.Size(250, 69);
+            this.buttonLanguage.TabIndex = 15;
+            this.buttonLanguage.Text = "LANGUAGE";
+            this.buttonLanguage.UseVisualStyleBackColor = true;
+            this.buttonLanguage.Click += new System.EventHandler(this.button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 39F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(2407, 1184);
+            this.ClientSize = new System.Drawing.Size(1924, 1064);
+            this.Controls.Add(this.buttonLanguage);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonRadiusSpeedUp);
             this.Controls.Add(this.buttonRadiusSpeedDown);
@@ -264,8 +265,7 @@ namespace EyeComMouse
             this.Controls.Add(this.buttonRowsCountUp);
             this.Controls.Add(this.buttonRowsCountDown);
             this.Controls.Add(this.buttonRowsCount);
-            this.Controls.Add(this.buttonDisable);
-            this.Controls.Add(this.buttonEnable);
+            this.Controls.Add(this.buttonOffOn);
             this.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -281,8 +281,7 @@ namespace EyeComMouse
 
         #endregion
 
-        private Button buttonEnable;
-        private Button buttonDisable;
+        private Button buttonOffOn;
         private Button buttonRowsCount;
         private Button buttonRowsCountDown;
         private Button buttonRowsCountUp;
@@ -296,6 +295,7 @@ namespace EyeComMouse
         private Button buttonRadiusSpeedDown;
         private Button buttonRadiusSpeed;
         private Button buttonSave;
+        private Button buttonLanguage;
     }
 }
 

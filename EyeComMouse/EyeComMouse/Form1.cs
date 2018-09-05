@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Globalization;
+using System.Resources;
 
 namespace EyeComMouse
 {
@@ -54,6 +56,9 @@ namespace EyeComMouse
     {
         int titleHeight;
 
+        ResourceManager resourceManager;    // declare Resource manager to access to specific cultureinfo
+        CultureInfo cultureInfo;   
+
         public Form1()
         {
             InitializeComponent();
@@ -74,10 +79,11 @@ namespace EyeComMouse
             Rectangle screenRectangle = RectangleToScreen(this.ClientRectangle);
             titleHeight = (screenRectangle.Top - this.Top);// / 2;
 
-            setControl(buttonEnable, 0, 0);
-            setControl(buttonDisable, 1, 0);
+            setControl(buttonOffOn, 0, 0);
+            //setControl(buttonDisable, 0, 0);
             //setControl(buttonLoad, 2, 0);
-            setControl(buttonSave, 3, 0);
+            setControl(buttonSave, 1, 0);
+            setControl(buttonLanguage, 2, 0);
 
             setControl(buttonRowsCount, 0, 1);
             setControl(buttonRowsCountDown, 0, 2);
@@ -94,26 +100,46 @@ namespace EyeComMouse
             setControl(buttonRadiusSpeed, 3, 1);
             setControl(buttonRadiusSpeedDown, 3, 2);
             setControl(buttonRadiusSpeedUp, 3, 3);
+         
+            buttonRowsCount.Text = resourceManager.GetString("Rows", cultureInfo) + "\n" + Program.rowsCount.ToString();
+            buttonColumnsCount.Text = resourceManager.GetString("Columns", cultureInfo) + "\n" + Program.columnsCount.ToString();
+            buttonTopOffset.Text = resourceManager.GetString("TopOffset", cultureInfo) + "\n" + Program.topOffset.ToString();
+            buttonRadiusSpeed.Text = resourceManager.GetString("Speed", cultureInfo) + "\n" + Program.radiusSpeed.ToString();
+            buttonSave.Text = resourceManager.GetString("Save", cultureInfo);
+            buttonLanguage.Text = resourceManager.GetString("Language", cultureInfo);
 
+            if(Program.bEnable)
+                buttonOffOn.Text = resourceManager.GetString("Off", cultureInfo);
+            else
+                buttonOffOn.Text = resourceManager.GetString("On", cultureInfo);
+            
+         
+            /*
             buttonRowsCount.Text = "RADKY\n" + Program.rowsCount.ToString();
             buttonColumnsCount.Text = "SLOUPCE\n" + Program.columnsCount.ToString();
             buttonTopOffset.Text = "HORNI ODSAZENI\n" + Program.topOffset.ToString();
             buttonRadiusSpeed.Text = "RYCHLOST\n" + Program.radiusSpeed.ToString();
 
-            buttonEnable.Text = "ZAPNOUT";
-            buttonDisable.Text = "VYPNOUT";
-            buttonEnable.Enabled = !Program.bEnable;
-            buttonDisable.Enabled = Program.bEnable;
+            if (Program.bEnable)
+                buttonOffOn.Text = "VYPNOUT";
+            else
+                buttonOffOn.Text = "ZAPNOUT";
             buttonSave.Text = "ULOZIT";
-
+            */
             this.Invalidate();
         }
 
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Opacity = 0.8;
             //this.TransparencyKey = this.BackColor;
             //this.BackColor = Color.FromArgb(10, this.BackColor);
+
+            resourceManager = new ResourceManager("EyeComMouse.Res", typeof(Form1).Assembly);
+            
+            cultureInfo = CultureInfo.CreateSpecificCulture(Program.language);
+
             setControls();
         }
 
@@ -134,9 +160,11 @@ namespace EyeComMouse
 
         private void button_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(this.TopLevelControl.Cursor.ToString());
+
             if (sender == buttonRowsCountDown)
             {
-                if (Program.rowsCount > 4)
+                if (Program.rowsCount > 2)
                 {
                     Program.rowsCount--;
                 }
@@ -190,15 +218,27 @@ namespace EyeComMouse
                     Program.radiusSpeed++;
                 }
             }
-            if (sender == buttonEnable)
+            if (sender == buttonOffOn)
             {
-                Program.bEnable = true;
+                //Program.bEnable = true;
+                Program.bEnable = !Program.bEnable;
             }
-            if (sender == buttonDisable)
+            if (sender == buttonLanguage)
             {
-                Program.bEnable = false;
-            }  
-            
+                if (Program.language.Contains("en"))
+                    Program.language = "cs";
+                else
+                    Program.language = "en";
+                cultureInfo = CultureInfo.CreateSpecificCulture(Program.language);
+                
+                //if(cultureInfo.TwoLetterISOLanguageName.Contains("en"))
+                //    cultureInfo = CultureInfo.CreateSpecificCulture("cs");
+                //else
+                //    cultureInfo = CultureInfo.CreateSpecificCulture("en");
+            }
+
+            Console.WriteLine(this.Cursor.ToString());
+
             setControls();            
         }
 

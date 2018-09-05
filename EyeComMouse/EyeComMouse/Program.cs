@@ -34,8 +34,30 @@ namespace EyeComMouse
         //private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelMouseProc lpfn, IntPtr hMod, uint dwThreadId);
         //private delegate IntPtr LowLevelMouseProc(int nCode, IntPtr wParam, IntPtr lParam);
 
-        [DllImport("user32.dll")]
-        private static extern IntPtr CreateCursor(IntPtr hInst, int xHotSpot, int yHotSpot, int nWidth, int nHeight, byte[] pvANDPlane, byte[] pvXORPlane);
+        //[StructLayout(LayoutKind.Sequential)]
+        //struct POINT 
+        //{ 
+        //     public Int32 x; 
+        //     public Int32 y; 
+        //}
+        //[StructLayout(LayoutKind.Sequential)]
+        //struct CURSORINFO
+        //{
+        //     public Int32 cbSize;        // Specifies the size, in bytes, of the structure. 
+        //                     // The caller must set this to Marshal.SizeOf(typeof(CURSORINFO)).
+        //     public Int32 flags;         // Specifies the cursor state. This parameter can be one of the following values:
+        //                     //    0             The cursor is hidden.
+        //                     //    CURSOR_SHOWING    The cursor is showing.
+        //     public IntPtr hCursor;          // Handle to the cursor. 
+        //     public POINT ptScreenPos;       // A POINT structure that receives the screen coordinates of the cursor. 
+        //}
+        /// <summary>Must initialize cbSize</summary>
+        //[DllImport("user32.dll")]
+        //static extern bool GetCursorInfo(ref CURSORINFO pci);
+        //private const Int32 CURSOR_SHOWING = 0x00000001;
+
+        //[DllImport("User32.dll")]
+        //private static extern IntPtr CreateCursor(IntPtr hInst, int xHotSpot, int yHotSpot, int nWidth, int nHeight, byte[] pvANDPlane, byte[] pvXORPlane);
         /*
         static byte[] andMaskCursor = new byte[]
         { 
@@ -57,6 +79,7 @@ namespace EyeComMouse
         };
         */
 
+        static public string language = "en";
         static public bool bEnable = true;
         static public int screenHeight, screenWidth;
         static public int topOffset = 200;
@@ -87,6 +110,7 @@ namespace EyeComMouse
             Properties.Settings.Default["Columns"] = Program.rowsCount;
             Properties.Settings.Default["Top"] = Program.topOffset;
             Properties.Settings.Default["Speed"] = Program.radiusSpeed;
+            Properties.Settings.Default["Language"] = Program.language;
             Properties.Settings.Default.Save();
         }
 
@@ -96,6 +120,7 @@ namespace EyeComMouse
             Program.rowsCount = (int)Properties.Settings.Default["Columns"];
             Program.topOffset = (int)Properties.Settings.Default["Top"];
             Program.radiusSpeed = (int)Properties.Settings.Default["Speed"];
+            Program.language = Properties.Settings.Default["Language"].ToString();
         }
 
         delegate void GazeHook(double x, double y);
@@ -174,6 +199,16 @@ namespace EyeComMouse
 
         static private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
+            //Console.WriteLine(Cursor.Current.Handle.ToString());
+            //Console.WriteLine(TopLevelControl.Cursor.ToString());
+            //Console.WriteLine(Cursor.Current.Size.ToString());
+            //CURSORINFO pci = new CURSORINFO();
+            //pci.cbSize = Marshal.SizeOf(typeof(CURSORINFO));
+            //GetCursorInfo(ref pci);
+            //Console.WriteLine(pci.flags);
+            //IntPtr handle = System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle;
+            //Console.WriteLine(System.Windows.Forms.Control.FromHandle(handle).TopLevelControl.Cursor.ToString());
+
             if (!bEnable)
             {
                 return;
@@ -248,7 +283,7 @@ namespace EyeComMouse
             
             //Console.WriteLine(e.Location.ToString());
             if(e.X != X && e.Y != Y) {
-                Console.WriteLine("M X: {0} Y:{1}", e.X, e.Y);
+                //Console.WriteLine("M X: {0} Y:{1}", e.X, e.Y);
                 int cellX = e.X / cellWidth;
                 cellX = cellX * cellWidth + cellWidth / 2;
 
@@ -267,6 +302,7 @@ namespace EyeComMouse
 
             public bool PreFilterMessage(ref Message m)
             {
+                //Console.WriteLine(m.ToString());
                 //if (m.Msg == WM_MOUSEMOVE)
                 {
                     System.Drawing.Point mousePosition = Control.MousePosition;
